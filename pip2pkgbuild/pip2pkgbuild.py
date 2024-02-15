@@ -97,9 +97,8 @@ def recognized_licenses():
     """
     :rtype: list[str]
     """
-    common = os.listdir('/usr/share/licenses/common')
-    return common + ['MIT', 'BSD', 'Python', 'ZLIB']
-
+    with open('/usr/share/licenses/known_spdx_license_identifiers.txt', 'r') as file:
+        return file.readlines()
 
 def search_in_iter(l, p):
     """Find the first element matching the predicate in an iterable.
